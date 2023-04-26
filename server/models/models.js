@@ -6,13 +6,13 @@ const User = sequelize.define( 'user', {
     email: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING, unique: true},
     role: {type: DataTypes.STRING, defaultValue: "USER"},    
-    currentQuestion: {type: DataTypes.INTEGER},
+    currentQuestion: {type: DataTypes.INTEGER, defaultValue: 1},
 });
 
 const Location = sequelize.define('location', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name: {type: DataTypes.STRING, allowNull: false},
-    // image: {type: DataTypes.STRING, allowNull: false},
+    description: {type: DataTypes.STRING, allowNull: false},
+    image: {type: DataTypes.STRING, allowNull: false},
 });
 
 const Question = sequelize.define('question', {
