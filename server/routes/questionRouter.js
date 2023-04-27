@@ -1,9 +1,10 @@
 const Router = require('express');
 const router = new Router();
-const QuestionController = require('../controllers/questionController')
+const QuestionController = require('../controllers/questionController');
+const checkRole = require('../middleware/checkRoleMiddleware');
 
-router.post('/', QuestionController.create);
-router.get('/', QuestionController.getAll);
+router.post('/', checkRole('ADMIN'), QuestionController.create);
+router.get('/', checkRole('ADMIN'), QuestionController.getAll);
 // router.get('/:id');
 router.delete('/', QuestionController.delete);
 

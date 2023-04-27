@@ -3,6 +3,7 @@ const ApiError = require("../error/ApiError");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
+
 const generateJWT = (id, email, role) => {
     return jwt.sign({ id, email, role }, process.env.SECRET_KEY, {
         expiresIn: "24h",
@@ -41,7 +42,10 @@ class UserController {
         return res.json({ token });
     }
 
-    async check(req, res, next) {}
+    async check(req, res, next) {
+        const token = generateJWT(req.user.id, req.user.email, req.user.role);
+        return res.json({token});
+    }
     async delete(req, res) {}
 }
 
