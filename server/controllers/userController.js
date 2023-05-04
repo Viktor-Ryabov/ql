@@ -49,4 +49,4 @@ class UserController {
     async delete(req, res) {}
 }
 
-module.exports = new UserController();
+module.exports = new UserController(); //fixed
